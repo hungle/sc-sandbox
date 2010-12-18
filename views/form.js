@@ -51,8 +51,9 @@ require("views/form_row");
 
 SandBox.FormView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmptiness, SandBox.FormsEditMode, 
 /** @scope SC.FormView.prototype */ {
-  layoutDirection: SC.LAYOUT_HORIZONTAL,
-  canWrap: YES,
+  //layoutDirection: SC.LAYOUT_HORIZONTAL,
+  layoutDirection: SC.LAYOUT_VERTICAL,
+  canWrap: NO,
   
   //formFlowSpacing: undefined,
   //formFlowSpacingDefault: { left: 5, top: 5, bottom: 5, right: 5 },
@@ -63,11 +64,6 @@ SandBox.FormView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmptin
   //}.property('formFlowSpacing', 'theme'),
   
   //classNames: ["sc-form-view"],
-
-  /**
-  Whether to automatically start editing.
-  */
-  editsByDefault: YES,
 
   /**
   The input key view (to set previousKeyView for the first row, field, or sub-form).
@@ -98,15 +94,6 @@ SandBox.FormView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmptin
   exampleRow: SandBox.FormRowView.extend({
     labelView: SandBox.FormRowView.LabelView.extend({ textAlign: SC.ALIGN_RIGHT })
   }),
-
-  /**
-  Init function.
-  */
-  init: function()
-  {
-    if (this.get("editsByDefault")) this.set("isEditing", YES);
-    sc_super();
-  },
 
   /**
   Calls _updateFields to load the fields.

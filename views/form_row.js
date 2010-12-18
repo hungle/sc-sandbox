@@ -20,7 +20,8 @@ SandBox.FormRowView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmp
   //rowFlowSpacing: undefined,
   
   //rowFlowPadding: undefined,
-  defaultFlowSpacing: { left: 5, top: 5, bottom: 5, right: 5 },
+  //defaultFlowSpacing: { left: 5, top: 5, bottom: 5, right: 5 },
+  defaultFlowSpacing: { left: 5, top: 0, bottom: 0, right: 5 },
   
   //defaultFlowSpacing: function() {
   //  return this.getThemedProperty("rowFlowSpacing", 'FORM_ROW_FLOW_SPACING');
@@ -72,7 +73,9 @@ SandBox.FormRowView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmp
 	/**
 	  Direction of the flow.
 	*/
-	layoutDirection: SC.LAYOUT_VERTICAL,
+	//layoutDirection: SC.LAYOUT_VERTICAL,
+
+  canWrap: NO,
 
   /**
   Updates keys, content, etc. on fields. Also, handles our "special" field (only-one case)
@@ -172,10 +175,10 @@ SandBox.FormRowView.mixin({
 		return ext;
 	},
 
-	LabelView: SC.LabelView.extend(SandBox.AutoResize, SandBox.CalculatesEmptiness, {
+	LabelView: SC.LabelView.extend(SC.AutoResize, SandBox.CalculatesEmptiness, {
 	  shouldAutoResize: NO, // only change the measuredSize so we can update.
-	  layout: { left:0, top:0, width: 0, height: 18 },
-	  fillHeight: YES,
+	  layout: { left: 0, top: 0, width: 0, height: 18 },
+	  //fillHeight: YES,
 	  //classNames: ["sc-form-label"],
       isValue: NO
 	})
