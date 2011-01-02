@@ -69,7 +69,7 @@ SandBox.FormView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmptin
   The input key view (to set previousKeyView for the first row, field, or sub-form).
 
   For fields, this will likely be the field itself.
-  */
+ */
   firstKeyView: null,
 
   /**
@@ -147,7 +147,7 @@ SandBox.FormView = SC.View.extend(SandBox.FlowedLayout, SandBox.CalculatesEmptin
             // controls can calculate their own value based on the contentValueKey we set earlier
             if (v.get('isControl')) v.bind('content', '.owner.content');
             // if it isn't a control then we can't use contentValueKey, so bind the content manually
-            else { v.bind('content', '.owner.content.' + key); console.log("Binding "+key+" to row view"); }
+            else v.bind('content', '.owner.content.' + key); 
           }
           
           // set the label size measuring stuff

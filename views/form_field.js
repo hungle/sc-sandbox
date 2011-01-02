@@ -72,7 +72,6 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
 
     this.beginPropertyChanges();
 
-    console.log('setting up display view');
     // Setup the display view 
     v = this.createChildView(this.get('displayView'));
     v.bind('value', this, 'value');
@@ -80,7 +79,6 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
     this.set('activeView', v);
     cv.push(v);
 
-    console.log('setting up edit view');
     // Setup the edit view
 		v = this.createChildView(this.get('editView'));
 	  this.set('editView', v);	
@@ -88,8 +86,6 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
 
     this.updateEditingState();
     this.set('childViews', cv);
-
-    console.log('done setting up views');
 
     this.endPropertyChanges();
     return this;
@@ -102,7 +98,6 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
 	layoutDidChangeFor: function(child) {
 		sc_super();
 
-    console.log('layout did change for child view');
 		if (SC.compare(child, this.get('activeView')) === 0) {
       this.invokeOnce(this._updateToActiveLayout);
 		}
@@ -112,13 +107,11 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
 		Called when the active view (field or label) changes 
 	*/
   activeViewDidChange: function() {
-    console.log('active view did change');                     
     this.invokeOnce(this._updateToActiveLayout);
   }.observes('activeView'),
 
 
 	_updateToActiveLayout: function() {
-    console.log('update to active layout');
 		var active = this.get('activeView');
 		if (!active) return;
 		
@@ -140,7 +133,6 @@ SandBox.FormFieldView = SC.View.extend(SC.Editable, SC.Control,
 	beginEditing: function() {
 		if (this.get('isEditing')) return YES;
   
-    console.log('begin editing form field');
     // Make the edit view active
     var v = this.get('editView');
     this.set('activeView', v);
